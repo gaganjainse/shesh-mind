@@ -8,9 +8,9 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from shesha_mind import server  # noqa: E402
-from shesha_mind.client import OllamaClient  # noqa: E402
-from shesha_mind.router import (  # noqa: E402
+from shesh_mind import server  # noqa: E402
+from shesh_mind.client import OllamaClient  # noqa: E402
+from shesh_mind.router import (  # noqa: E402
     DEFAULT_MODELS,
     ModelRouter,
     Role,

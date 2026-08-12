@@ -4,14 +4,14 @@ from __future__ import annotations
 from mcp.server.fastmcp import FastMCP
 
 try:
-    from shesha_audit.mcp_guard import GuardedMCP as _MCP
+    from shesh_audit.mcp_guard import GuardedMCP as _MCP
 except ImportError:  # audit not installed; fall back to plain FastMCP
     _MCP = FastMCP
 
 from .client import OllamaClient, http_transport
 from .router import ModelRouter, Role
 
-mcp = _MCP("shesha-mind")
+mcp = _MCP("shesh-mind")
 
 _router = ModelRouter()
 _client: OllamaClient | None = None

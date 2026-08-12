@@ -1,4 +1,4 @@
-# 🧭 shesha-mind
+# 🧭 shesh-mind
 
 **Model router for the 6 GB local LLM stack.** Given an agent role (planner,
 coder, vision, critic), pick the right Ollama model within VRAM budget, with
@@ -6,7 +6,7 @@ fallbacks and session planning.
 
 - License: GPL-3.0
 - Layer: Mind
-- Part of: [Shesha ecosystem](https://github.com/gaganjainse/shesha-ecosystem)
+- Part of: [Shesh ecosystem](https://github.com/gaganjainse/shesh-ecosystem)
 
 ## Default mappings (RTX 4050 / 6 GB)
 
@@ -29,7 +29,7 @@ fallbacks and session planning.
 uv sync --extra dev
 uv run pytest -q       # 12 offline tests
 uv run ruff check .
-uv run shesha-mind-mcp
+uv run shesh-mind-mcp
 ```
 
 The Ollama client is injectable so tests run fully offline.

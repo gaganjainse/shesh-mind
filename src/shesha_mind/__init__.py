@@ -1,4 +1,4 @@
-"""shesha-mind: model routing for the 6 GB-safe local stack.
+"""shesh-mind: model routing for the 6 GB-safe local stack.
 
 Given a task role and context, pick which Ollama model should handle it.
 The router is deterministic and config-driven so it's testable without a
