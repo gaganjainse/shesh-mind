@@ -1,12 +1,7 @@
 """MCP server exposing model routing to the orchestrator and skills."""
 from __future__ import annotations
 
-from fastmcp import FastMCP
-
-try:
-    from shesh_audit.mcp_guard import GuardedMCP as _MCP
-except ImportError:  # audit not installed; fall back to plain FastMCP
-    _MCP = FastMCP
+from shesh_audit.mcp_guard import GuardedMCP as _MCP
 
 from .client import OllamaClient, http_transport
 from .router import ModelRouter, Role
