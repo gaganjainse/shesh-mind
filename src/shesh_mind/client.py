@@ -5,6 +5,7 @@ Network access is isolated here so tests can inject a fake transport.
 from __future__ import annotations
 
 import json
+import sys
 import urllib.request
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -37,7 +38,11 @@ class OllamaClient:
     def list_models(self) -> list[str]:
         try:
             data = self.transport("GET", "/api/tags", None)
-        except Exception:  # noqa: BLE001 - offline is fine
+        except (OSError, ValueError) as e:
+            # Ollama unreachable or malformed reply: "no models" is the
+            # designed offline answer, and it is announced, not silent.
+            print(f"ollama list_models probe failed ({e}); reporting no models",
+                  file=sys.stderr)
             return []
         return [m.get("name", "") for m in data.get("models", [])]
 
