@@ -1,6 +1,6 @@
-> ⚠️ **Consolidated into [shesh-core](https://github.com/gaganjainse/shesh-core)** — this module now lives in the shesh-core monorepo (same package name, same console script). Archived 2026-08-13.
+>  **Consolidated into [shesh-core](https://github.com/gaganjainse/shesh-core)** — this module now lives in the shesh-core monorepo (same package name, same console script). Archived 2026-08-13.
 
-# 🧭 shesh-mind
+# shesh-mind
 
 **Model router for the 6 GB local LLM stack.** Given an agent role (planner,
 coder, vision, critic), pick the right Ollama model within VRAM budget, with
@@ -33,7 +33,6 @@ uv run pytest -q       # 12 offline tests
 uv run ruff check .
 uv run shesh-mind-mcp
 ```
-
 The Ollama client is injectable so tests run fully offline.
 
 ## Security
