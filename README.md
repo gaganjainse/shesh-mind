@@ -1,41 +1,35 @@
->  **Consolidated into [shesh-core](https://github.com/gaganjainse/shesh-core)** — this module now lives in the shesh-core monorepo (same package name, same console script). Archived 2026-08-13.
-
 # shesh-mind
 
-**Model router for the 6 GB local LLM stack.** Given an agent role (planner,
-coder, vision, critic), pick the right Ollama model within VRAM budget, with
-fallbacks and session planning.
+> **Superseded by [shesh-core](https://github.com/gaganjainse/shesh-core).**
+> This repository is a tombstone: its history is preserved, its source is not.
 
-- License: GPL-3.0
-- Layer: Mind
-- Part of: [Shesh ecosystem](https://github.com/gaganjainse/shesh-ecosystem)
+## What happened
 
-## Default mappings (RTX 4050 / 6 GB)
+[ADR-0019](https://github.com/gaganjainse/shesh-docs/blob/main/src/governance/adr/0019-shesh-core-monorepo.md)
+consolidated the single-module services into one repository. A module of a few
+hundred lines is not a service: each one carried its own build configuration,
+pipeline, and security policy, and those drifted apart from each other.
 
-| Role | Model | VRAM |
-|---|---|---|
-| primary/planner/researcher/critic | phi4-mini | 2.5 GB |
-| coder | qwen2.5-coder:3b | 2.8 GB |
-| vision | moondream2 | 2.2 GB |
-| embedding | nomic-embed-text | 0.6 GB |
+The code now lives in `shesh-core` as the `shesh_mind` package, with
+the same import path and the same console script.
 
-## MCP tools
+## Why the source was removed
 
-- `select_model(role, allow_vision, loaded_models)` — choose one model
-- `plan_session(roles)` — assign models across roles, minimizing distinct models
-- `list_roles()`, `set_model_for_role(role, model)`, `list_installed_models()`
+Two copies of the same module drift. Keeping the code here meant a reader could
+find it, edit it, and have the change silently ignored by everything that
+actually runs.
 
-## Develop
+The history remains in this repository's git log. Nothing was lost.
+
+## Installing
 
 ```bash
-uv sync --extra dev
-uv run pytest -q       # 12 offline tests
-uv run ruff check .
-uv run shesh-mind-mcp
+pipx install git+https://github.com/gaganjainse/shesh-core.git
 ```
-The Ollama client is injectable so tests run fully offline.
 
-## Security
+Console script names are unchanged, so existing client configuration keeps
+working.
 
-Security posture and vulnerability reporting: [canonical ecosystem security
-policy](https://github.com/gaganjainse/shesh-ecosystem/blob/main/SECURITY.md).
+## Licence
+
+GPL-3.0-or-later.
